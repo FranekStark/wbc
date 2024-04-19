@@ -61,7 +61,7 @@ make -j8 && sudo make install && cd ../../..
 # qpOASES
 git clone https://github.com/coin-or/qpOASES.git -b releases/3.2.0
 cd qpOASES
-mkdir patches && cp ../../wbc/patches/qpOASES.patch patches
+mkdir patches && cp ../wbc/patches/qpOASES.patch patches
 git apply patches/qpOASES.patch
 mkdir build && cd build
 cmake .. && make -j8 && sudo make install && cd ../..
