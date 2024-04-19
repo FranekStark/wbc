@@ -49,7 +49,7 @@ make -j8 && sudo make install && cd ../..
 sudo apt-get -y install libtinyxml2-dev
 git clone https://github.com/ros/kdl_parser.git -b 1.14.1
 cd kdl_parser/kdl_parser
-mkdir patches && cp ../../../wbc/patches/kdl_parser.patch patches
+mkdir patches && cp ../../wbc/patches/kdl_parser.patch patches
 git apply patches/kdl_parser.patch
 mkdir build && cd build 
 cmake .. 
