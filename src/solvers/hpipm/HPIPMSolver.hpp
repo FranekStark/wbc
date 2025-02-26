@@ -4,6 +4,9 @@
 #include "../../core/QPSolver.hpp"
 #include "../../core/QuadraticProgram.hpp"
 #include <acados_c/dense_qp_interface.h>
+#include <map>
+#include <variant>
+#include <string>
 
 namespace wbc {
 
@@ -17,6 +20,7 @@ private:
     dense_qp_out *qp_out;
     dense_qp_solver *qp_solver;
     qp_solver_config *config;
+    std::map<std::string, double> options_to_set_;
 
     std::string returnCodeToString(int code);
 
@@ -33,7 +37,7 @@ public:
 
     dense_qp_solver_plan plan;
 
-    void setOptions(std::string &field, void* value);
+    void setOptions(const std::string &field, const double & value);
 
 };
 }
