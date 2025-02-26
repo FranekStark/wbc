@@ -61,9 +61,9 @@ void HPIPMSolver::solve(const HierarchicalQP &hierarchical_qp, Eigen::VectorXd &
         dense_qp_hpipm_opts *hpipm_opts = (dense_qp_hpipm_opts *)opts;
         hpipm_opts->hpipm_opts->warm_start = 0;
         hpipm_opts->hpipm_opts->mode = SPEED;
-        d_dense_qp_ipm_arg_set_default(SPEED, opts->hpipm_opts);
-        for (const auto& [key, value] : data_) {
-            d_dense_qp_ipm_arg_set((char*)key.c_str(), &value, hpipm_opts->hpipm_opts);
+        d_dense_qp_ipm_arg_set_default(SPEED, hpipm_opts->hpipm_opts);
+        for (auto it = options_to_set_.begin(); it != options_to_set_.end(); ++it)  {
+            d_dense_qp_ipm_arg_set((char*)it->first->c_str(), it->second, hpipm_opts->hpipm_opts);
         }
 
         if(qp_out)
